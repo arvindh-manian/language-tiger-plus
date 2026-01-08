@@ -34,9 +34,16 @@
 		},
 		{
 			"include": "#identifiers"
+		},
+		{
+			"include": "#characters"
 		}
 	],
 	"repository": {
+		"escape": {
+			"name": "constant.character.escape.tiger",
+			"match": "\\\\('|n|t|\"|\\^[@-_]|0[0-9]{2}|1([01][0-9]|2[0-7])|[ \t\n\r\f]*\\\\)"
+		},
 		"comments": {
 			"patterns": [
 				{
@@ -157,6 +164,40 @@
 				}
 			]
 		},
+		"characters": {
+			"patterns": [
+				{
+					"name": "constant.character.tiger",
+					"match": "(')(?:[^\\\\'])(')",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.character.begin.tiger"
+						},
+						"2": {
+							"name": "constant.character.tiger"
+						},
+						"3": {
+							"name": "punctuation.definition.character.end.tiger"
+						}
+					}
+				},
+				{
+					"name": "constant.character.escaped.tiger",
+					"match": "(')(?:\\\\('|n|t|\"|\\^[@-_]|0[0-9]{2}|1(?:[01][0-9]|2[0-7])))(')",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.character.begin.tiger"
+						},
+						"2": {
+							"name": "constant.character.escape.tiger"
+						},
+						"3": {
+							"name": "punctuation.definition.character.end.tiger"
+						}
+					}
+				}
+			]
+		},
 		"strings": {
 			"patterns": [
 				{
@@ -175,8 +216,7 @@
 					},
 					"patterns": [
 						{
-							"name": "constant.character.escape.tiger",
-							"match": "\\\\(n|t|\"|\\^[@-_]|0[0-9]{2}|1([01][0-9]|2[0-7])|[ \t\n\r\f]*\\\\)"
+							"include": "#escape"
 						},
 						{
 							"name": "constant.character.escape.tiger",
