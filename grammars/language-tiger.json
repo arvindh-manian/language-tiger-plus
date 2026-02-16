@@ -79,6 +79,10 @@
 					"match": "\\bint\\b"
 				},
 				{
+					"name": "storage.type.char.tiger",
+					"match": "\\bchar\\b"
+				},
+				{
 					"name": "storage.type.str.tiger",
 					"match": "\\bstring\\b"
 				},
